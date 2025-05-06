@@ -1,0 +1,117 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --device "MSPM0G350X" --part "Default" --package "LQFP-64(PM)" --product "mspm0_sdk@2.04.00.06"
+ * @v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)" --product "mspm0_sdk@2.04.00.06"
+ * @versions {"tool":"1.22.0+3893"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const GPIO   = scripting.addModule("/ti/driverlib/GPIO", {}, false);
+const GPIO1  = GPIO.addInstance();
+const I2C    = scripting.addModule("/ti/driverlib/I2C", {}, false);
+const I2C1   = I2C.addInstance();
+const SPI    = scripting.addModule("/ti/driverlib/SPI", {}, false);
+const SPI1   = SPI.addInstance();
+const TIMER  = scripting.addModule("/ti/driverlib/TIMER", {}, false);
+const TIMER1 = TIMER.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+GPIO1.$name                               = "GPIO_BUTTON";
+GPIO1.associatedPins.create(13);
+GPIO1.associatedPins[0].$name             = "PIN_0";
+GPIO1.associatedPins[0].direction         = "INPUT";
+GPIO1.associatedPins[0].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[0].pin.$assign       = "PA0";
+GPIO1.associatedPins[1].$name             = "PIN_1";
+GPIO1.associatedPins[1].direction         = "INPUT";
+GPIO1.associatedPins[1].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[1].pin.$assign       = "PA1";
+GPIO1.associatedPins[2].$name             = "PIN_2";
+GPIO1.associatedPins[2].direction         = "INPUT";
+GPIO1.associatedPins[2].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[2].pin.$assign       = "PA2";
+GPIO1.associatedPins[3].$name             = "PIN_3";
+GPIO1.associatedPins[3].direction         = "INPUT";
+GPIO1.associatedPins[3].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[4].$name             = "PIN_4";
+GPIO1.associatedPins[4].direction         = "INPUT";
+GPIO1.associatedPins[4].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[4].pin.$assign       = "PA4";
+GPIO1.associatedPins[5].$name             = "PIN_5";
+GPIO1.associatedPins[5].direction         = "INPUT";
+GPIO1.associatedPins[5].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[5].pin.$assign       = "PA5";
+GPIO1.associatedPins[6].$name             = "PIN_6";
+GPIO1.associatedPins[6].direction         = "INPUT";
+GPIO1.associatedPins[6].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[6].pin.$assign       = "PA6";
+GPIO1.associatedPins[7].$name             = "PIN_7";
+GPIO1.associatedPins[7].direction         = "INPUT";
+GPIO1.associatedPins[7].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[7].pin.$assign       = "PA7";
+GPIO1.associatedPins[8].$name             = "PIN_8";
+GPIO1.associatedPins[8].direction         = "INPUT";
+GPIO1.associatedPins[8].internalResistor  = "PULL_DOWN";
+GPIO1.associatedPins[8].pin.$assign       = "PA8";
+GPIO1.associatedPins[9].$name             = "PIN_12";
+GPIO1.associatedPins[9].invert            = "ENABLE";
+GPIO1.associatedPins[9].pin.$assign       = "PA12";
+GPIO1.associatedPins[10].$name            = "PIN_13";
+GPIO1.associatedPins[10].invert           = "ENABLE";
+GPIO1.associatedPins[10].pin.$assign      = "PA13";
+GPIO1.associatedPins[11].$name            = "PIN_14";
+GPIO1.associatedPins[11].invert           = "ENABLE";
+GPIO1.associatedPins[11].pin.$assign      = "PA14";
+GPIO1.associatedPins[12].$name            = "PIN_9";
+GPIO1.associatedPins[12].internalResistor = "PULL_UP";
+
+const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
+Board.peripheral.$assign          = "DEBUGSS";
+Board.peripheral.swclkPin.$assign = "PA20";
+Board.peripheral.swdioPin.$assign = "PA19";
+
+I2C1.$name                     = "I2C_0";
+I2C1.basicEnableController     = true;
+I2C1.peripheral.sdaPin.$assign = "PA10";
+I2C1.peripheral.sclPin.$assign = "PA11";
+I2C1.sdaPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric0";
+I2C1.sdaPinConfig.enableConfig = true;
+I2C1.sclPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric1";
+I2C1.sclPinConfig.enableConfig = true;
+
+SPI1.$name               = "SPI_0";
+SPI1.dataSize            = 16;
+SPI1.targetBitRate       = 1000000;
+SPI1.enabledInterrupts   = ["TX"];
+SPI1.frameFormat         = "MOTO3";
+SPI1.sclkPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric2";
+SPI1.mosiPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric3";
+SPI1.misoPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric4";
+
+const SYSCTL                 = scripting.addModule("/ti/driverlib/SYSCTL", {}, false);
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.clockTreeEn           = true;
+
+TIMER1.$name       = "TIMER_0";
+TIMER1.timerMode   = "PERIODIC_UP";
+TIMER1.timerPeriod = "1 ms";
+TIMER1.interrupts  = ["OVERFLOW"];
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+GPIO1.associatedPins[3].pin.$suggestSolution  = "PB13";
+GPIO1.associatedPins[12].pin.$suggestSolution = "PB14";
+I2C1.peripheral.$suggestSolution              = "I2C0";
+SPI1.peripheral.$suggestSolution              = "SPI0";
+SPI1.peripheral.sclkPin.$suggestSolution      = "PB18";
+SPI1.peripheral.mosiPin.$suggestSolution      = "PA9";
+SPI1.peripheral.misoPin.$suggestSolution      = "PB19";
+TIMER1.peripheral.$suggestSolution            = "TIMA0";
