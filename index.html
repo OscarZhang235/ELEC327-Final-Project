@@ -28,9 +28,18 @@
   <div class="container">
     <h2 class="title is-3">1. Introduction</h2>
     <p>
-      The MagicKeyboard is a low-power embedded system designed to translate motion and touch into digital input signals. 
-      Built on the TI MSPM0 microcontroller platform, our system features real-time feedback, interrupt-driven control, and low-power design practices. 
-      We used capacitive touch sensors and gyroscopic input to interpret user intention, driving an output that mimics a keyboard.
+      In this project, we designed and implemented an audio player and recorder using the Texas Instru-
+ments MSPM0G3507 microcontroller. Our design was inspired by musical synthesizers and key-
+boards, which can blend multiple tones together in real-time through physical input. We aimed to
+replicate a similar experience at a basic level by integrating digital signal generation with hardware-
+based playback.
+The system uses GPIO-controlled push buttons to generate different audio pitches, an I2C-based
+DAC to convert digital signals into analog voltages, and an external amplifier to drive a speaker.
+An LED provides visual feedback to indicate when the system is in recording or playback mode.
+Additionally, we implemented a simple recording and playback function using the SRAM of the
+microcontroller, allowing users to capture and replay sequences of tones. This project not only
+strengthened our understanding of embedded systems and signal processing but also highlighted
+practical challenges in real-time audio systems.
     </p>
   </div>
 </section>
